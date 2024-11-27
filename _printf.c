@@ -3,14 +3,19 @@
 
 int _printf(const char *format, ...)
 {
-	va_list agrs;
-	int count;
+	specifier_t specs[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{NULL, NULL}};
+	va_list args;
+	int i, j, count = 0;
 
-	 if (!format)
-        return (-1);
+	if (!format)
+		return (-1);
 
 	va_start(args, format);
 
-	for (count = 0; count < format[count]; count++)
- }
+	for (i = 0; format[i] != '\0'; i++)
 
+}
