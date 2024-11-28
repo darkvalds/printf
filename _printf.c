@@ -1,4 +1,4 @@
-#include "_printf.h"
+#include "main.h"
 
 /**
  * _printf - Réimplémentation simplifiée de la fonction printf.

@@ -1,4 +1,4 @@
-#include "_printf.h"
+#include "main.h"
 /**
  * print_char - Gère le spécificateur `%c` dans la fonction _printf.
  * @args: Liste d'arguments passée à _printf, contenant le caractère à imprimer.
