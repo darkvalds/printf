@@ -66,3 +66,4 @@ int _printf(const char *format, ...)
     /* Retourner le nombre total de caractères imprimés */
     return (count);
 }
+
