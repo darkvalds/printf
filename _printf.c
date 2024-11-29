@@ -53,10 +53,10 @@ int _printf(const char *format, ...)
                 count += 2;           /* Incrémenter le compteur de 2 caractères */
             }
         }
-        else /* Si ce n'est pas un spécificateur */
+        else 
         {
             write(1, &format[i], 1); /* Afficher le caractère tel quel */
-            count++; /* Incrémenter le compteur de caractères imprimés */
+            count++; 
         }
     }
 
