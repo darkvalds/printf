@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
         {NULL, NULL}         /* Fin du tableau */
     };
     va_list args;    /* Liste d'arguments variadiques */
-    int i, j, count = 0; /* Compteurs et indices */
+    int count1, count2, count = 0; /* Compteurs  */
 
     /* Vérification si la chaîne de format est NULL */
     if (!format)
@@ -32,30 +32,30 @@ int _printf(const char *format, ...)
     va_start(args, format);
 
     /* Parcours de la chaîne de format caractère par caractère */
-    for (i = 0; format[i] != '\0'; i++)
+    for (count1 = 0; format[count1] != '\0'; count1++)
     {
-        if (format[i] == '%') /* Détection d'un spécificateur */
+        if (format[count1] == '%') /* Détection d'un spécificateur */
         {
-            i++; /* Passer le caractère `%` */
-            for (j = 0; specs[j].specifier; j++) /* Recherche du spécificateur */
+            count1++; /* Passer le caractère `%` */
+            for (count2 = 0; specs[count2].specifier; count2++) /* Recherche du spécificateur */
             {
-                if (format[i] == *(specs[j].specifier))
+                if (format[count1] == *(specs[count2].specifier))
                 {
                     /* Appel de la fonction associée au spécificateur */
-                    count += specs[j].f(args);
+                    count += specs[count2].f(args);
                     break; /* Sortir de la boucle pour passer au caractère suivant */
                 }
             }
-            if (!specs[j].specifier) /* Si le spécificateur est inconnu */
+            if (!specs[count2].specifier) /* Si le spécificateur est inconnu */
             {
                 write(1, "%", 1);      /* Afficher `%` */
-                write(1, &format[i], 1); /* Afficher le caractère suivant */
+                write(1, &format[count1], 1); /* Afficher le caractère suivant */
                 count += 2;           /* Incrémenter le compteur de 2 caractères */
             }
         }
         else 
         {
-            write(1, &format[i], 1); /* Afficher le caractère tel quel */
+            write(1, &format[count1], 1); /* Afficher le caractère tel quel */
             count++; 
         }
     }
